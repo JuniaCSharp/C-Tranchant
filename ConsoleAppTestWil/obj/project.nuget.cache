@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "nQkbX99/YkTsymHqT/xx3WYwF+t9yypn6lguQ/Jy592sFNsSU6sAiSD2MuI0uAzwFpohg9F8btXN8IFICUjCkQ==",
+  "success": true,
+  "projectFilePath": "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
+=======
   "dgSpecHash": "QZEW+eFQ1ynO+9FS/PNpKDwP/aTrTS104KM/viyjW0Vnft5lk/GGb0Z1lzXVQYgrpjgi61AiNpKA+3RgEJe6Wg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
+>>>>>>> bb406c747a71c57ce0ac36a7f1f192836df5cdb5
   "expectedPackageFiles": [],
   "logs": []
 }
