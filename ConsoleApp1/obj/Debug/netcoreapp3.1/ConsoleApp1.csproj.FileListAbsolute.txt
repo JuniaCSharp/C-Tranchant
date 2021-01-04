@@ -1,0 +1,13 @@
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.exe
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.deps.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.dev.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.dll
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.pdb
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfoInputs.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfo.cs
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CoreCompileInputs.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.dll
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.pdb
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.genruntimeconfig.cache

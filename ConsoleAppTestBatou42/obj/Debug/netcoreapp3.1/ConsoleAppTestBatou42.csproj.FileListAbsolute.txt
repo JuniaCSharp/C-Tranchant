@@ -1,0 +1,13 @@
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.exe
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.deps.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.runtimeconfig.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.runtimeconfig.dev.json
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.dll
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\bin\Debug\netcoreapp3.1\ConsoleAppTestBatou42.pdb
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.csprojAssemblyReference.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.AssemblyInfoInputs.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.AssemblyInfo.cs
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.csproj.CoreCompileInputs.cache
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.dll
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.pdb
+E:\CodingProjects\VisualStudioProjects\C-Tranchant\ConsoleAppTestBatou42\obj\Debug\netcoreapp3.1\ConsoleAppTestBatou42.genruntimeconfig.cache
