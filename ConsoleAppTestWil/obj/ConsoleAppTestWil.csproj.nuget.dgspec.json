@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj": {}
+    "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj": {}
   },
   "projects": {
-    "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj": {
+    "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
+        "projectUniqueName": "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
         "projectName": "ConsoleAppTestWil",
-        "projectPath": "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
-        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
-        "outputPath": "E:\\CodingProjects\\VisualStudioProjects\\C-Tranchant\\ConsoleAppTestWil\\obj\\",
+        "projectPath": "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\ConsoleAppTestWil.csproj",
+        "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Thomas\\Source\\Repos\\JuniaCSharp\\C-Tranchant\\ConsoleAppTestWil\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
