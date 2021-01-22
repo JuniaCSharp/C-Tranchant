@@ -1,0 +1,13 @@
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.exe
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.deps.json
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.runtimeconfig.json
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.runtimeconfig.dev.json
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.dll
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\bin\Debug\netcoreapp3.1\Exo3.pdb
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.csprojAssemblyReference.cache
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.AssemblyInfoInputs.cache
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.AssemblyInfo.cs
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.csproj.CoreCompileInputs.cache
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.dll
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.pdb
+E:\CodingProjects\VisualStudioProjects\TD1CSharp\Exo3\obj\Debug\netcoreapp3.1\Exo3.genruntimeconfig.cache
