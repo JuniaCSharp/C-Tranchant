@@ -25,10 +25,11 @@
             <RowDefinition Height="600"/>
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
-        <Border x:Name="SeaBorder"  Background="#2f5cb6" Grid.ColumnSpan="2" RenderTransformOrigin="0.469,0.517" >
+        <Border x:Name="SeaBorder" Grid.Row ="0"  Grid.Column ="0"  Background="#2f5cb6" RenderTransformOrigin="0.5,0.5" >
+            <Rectangle Fill="Yellow" Stroke="Red" Canvas.Top="0" Canvas.Left="0" StrokeThickness="3" Margin="185,222,142,221" RadiusX="0" RadiusY="0" RenderTransformOrigin="0,0" />
 
         </Border>
-        <Border Grid.Column ="2" Background="#FF040B5B"/>
+        <Border Grid.Column ="1" Background="#FF040B5B"/>
         <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#152951" />
         <StackPanel Grid.Column="2" Margin="40,0,10,0" VerticalAlignment="Center">
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>

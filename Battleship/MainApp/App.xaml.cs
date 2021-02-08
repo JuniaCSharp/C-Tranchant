@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MainApp
 {
+
     /// <summary>
     /// Fournit un comportement spécifique à l'application afin de compléter la classe Application par défaut.
     /// </summary>

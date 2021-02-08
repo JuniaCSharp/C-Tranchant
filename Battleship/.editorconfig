@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS1697: Valeurs de checksum différentes spécifiées pour #pragma
+dotnet_diagnostic.CS1697.severity = silent
