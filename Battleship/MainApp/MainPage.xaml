@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    KeyDown="KeyPressed" Height="800" Width="900">
+    KeyDown="KeyPressed" 
+    Height="800" 
+    Width="1200">
     <Page.Resources>
         <DataTemplate x:Key="TextBoxHeaderTemplate1" >
             <TextBlock Text="{Binding}" Foreground="YellowGreen"/>
@@ -18,36 +20,41 @@
 
     <Grid x:Name="layoutRoot" Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="630"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="635"/>
+            <ColumnDefinition Width="285"/>
+            <ColumnDefinition Width="280"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="630"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="315"/>
+            <RowDefinition Height="320"/>
+            <RowDefinition Height="165"/>
         </Grid.RowDefinitions>
-        <Border x:Name="SeaBorder" Grid.Row ="0"  Grid.Column ="0"  Background="#2f5cb6" RenderTransformOrigin="0.5,0.5" >
-            <!--Test Rectangle-->
-            <Rectangle Fill="Yellow" Stroke="Red" Canvas.Top="0" Canvas.Left="0" StrokeThickness="3" Margin="185,222,142,221" RadiusX="0" RadiusY="0" RenderTransformOrigin="0,0" />
-        </Border>
+
+        <Border x:Name="SeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0"  Background="#2f5cb6" RenderTransformOrigin="0.5,0.5" />
         <Border Grid.Column ="1" Background="#FF040B5B"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#152951" />
-        <StackPanel Grid.Column="2" Margin="40,0,10,0" VerticalAlignment="Center">
+        <Border Grid.Column ="2" Background="#FF040B5B"/>
+        <Border Grid.Row="2" Background="#152951" />
+        <Border Grid.Column ="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="CadetBlue" />
+
+        <StackPanel Grid.Column="1" Margin="40,20,40,20" HorizontalAlignment="Left">
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_X" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBoxRemainingShots" Foreground="White" Header ="Tirs restants" FontSize="25" Text="" IsReadOnly="True"/>
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="nbTotalImpacts" Header="Impacts"  Foreground="White" FontSize="25" Text="0" IsReadOnly="True"/>
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="Level" Header="Niveau" Foreground="White" FontSize="25" Text="1"/>
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="nbTotalImpacts" Header="Impacts"  Foreground="White" Text="0" IsReadOnly="True"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal"
-            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="207,47,0,0">
+        <StackPanel Grid.Column="1" Margin="40,20,40,20" HorizontalAlignment="Right">
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBoxRemainingShots" Foreground="White" Header ="Tirs restants" Text="" IsReadOnly="True"/>
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="Level" Header="Niveau" Foreground="White" Text="1"/>
+        </StackPanel>
 
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" Foreground="White" FontSize="25" Header ="Visibilité :" Text="Mauvaise" Margin="0,0,50,0"/>
-
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="TextBoxStatus" Foreground ="White" FontSize="25" Header="Résultat tir :" Text="GO ON !"/>
+        <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,20,40,20" HorizontalAlignment="Left">
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" Foreground="White" Header ="Visibilité :" Text="Ouragan" IsReadOnly="True"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,20,40,20" HorizontalAlignment="Right">
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="TextBoxStatus" Foreground ="White" Header="Résultat tir :" IsReadOnly="True"/>
         </StackPanel>
 
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="3917,1076,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="StartButton" Content="Play" Grid.Column="1" Margin="49,0,0,0" Grid.Row="1" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6" Click="StartButton_Click"/>
+        <Button x:Name="StartButton" Content="Play" Grid.Column="0" Grid.Row="2"  Margin="388,43,0,0" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6" Click="StartButton_Click" VerticalAlignment="Top"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="200" Grid.Row="1" VerticalAlignment="Center" Width="123" Source="/Assets/battleship-uss-iowa-1080P-wallpaper-middle-size.png" Stretch="Fill"/>
 
     </Grid>
