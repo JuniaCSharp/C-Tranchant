@@ -32,17 +32,35 @@ namespace MainApp
         }
         public void InitializeSea()
         {
+            // Init grid object
             grid = new Grid();
             grid.Name = "SeaGrid";
 
-            Rectangle rect = new Rectangle();
-            rect.Width = 42;
-            rect.Height = 42;
-            rect.Fill = new SolidColorBrush(Colors.White);
-            rect.Margin = new Thickness(185,222,142,221);
+            // Create Cols and Rows of our Grid (15x15)
+            for (int i = 0; i < 15; i++){
+                ColumnDefinition col = new ColumnDefinition();
+                RowDefinition row = new RowDefinition();
+                col.Width = new GridLength(42);
+                row.Height = new GridLength(42);
+                grid.ColumnDefinitions.Add(col);
+                grid.RowDefinitions.Add(row);
+            }
+
+            // Fill Cols and Rows with Rectangles
+            for (int i = 0; i < 15; i++){
+                for (int j = 0; j < 15; j++){
+                    Rectangle rect = new Rectangle();
+                    rect.Width = 42;
+                    rect.Height = 42;
+                    rect.Fill = new SolidColorBrush(Colors.White);
+                    rect.Stroke = new SolidColorBrush(Colors.Blue);
+                    Grid.SetRow(rect, i);
+                    Grid.SetColumn(rect, j);
+                    grid.Children.Add(rect);
+                }
+            }
 
             SeaBorder.Child = grid;
-            grid.Children.Add(rect);
         }
 
         public void StartButton_Click(object sender, RoutedEventArgs e)
