@@ -1,6 +1,0 @@
-Exo 1 et 2 fait
-Exo 3 à faire
-Exo 4 à completer car j'ai pas bien compris cette partie de l'énoncé
-"Comme il n’est pas possible de modifier la taille d’un tableau à deux dimensions on procédera par
-copie dans un nouveau tableau.
-Ecrire une méthode pour afficher la taille du tableau pour chaque dimension"
