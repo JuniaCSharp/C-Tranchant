@@ -52,15 +52,30 @@ namespace MainApp
                     Rectangle rect = new Rectangle();
                     rect.Width = 42;
                     rect.Height = 42;
+                    rect.Name = (i + ":" + j);
                     rect.Fill = new SolidColorBrush(Colors.White);
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
+                    rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
                     Grid.SetRow(rect, i);
                     Grid.SetColumn(rect, j);
                     grid.Children.Add(rect);
                 }
             }
-
             SeaBorder.Child = grid;
+        }
+
+        public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Rectangle rect = (Rectangle)sender;
+            String name = rect.Name;
+            var splittedName = name.Split(':');
+            int x = Int32.Parse(splittedName[0].ToString());
+            int y = Int32.Parse(splittedName[1].ToString());
+
+            textBox1_X.Text = x.ToString();
+            textBox1_Y.Text = y.ToString();
+
+            rect.Fill = new SolidColorBrush(Colors.Red);
         }
 
         public void StartButton_Click(object sender, RoutedEventArgs e)

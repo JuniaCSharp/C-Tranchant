@@ -32,8 +32,8 @@
         <Border Grid.Column ="1" Background="#FF040B5B"/>
         <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#152951" />
         <StackPanel Grid.Column="2" Margin="40,0,10,0" VerticalAlignment="Center">
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_X" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_X" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBoxRemainingShots" Foreground="White" Header ="Tirs restants" FontSize="25" Text="" IsReadOnly="True"/>
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="nbTotalImpacts" Header="Impacts"  Foreground="White" FontSize="25" Text="0" IsReadOnly="True"/>
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="Level" Header="Niveau" Foreground="White" FontSize="25" Text="1"/>
