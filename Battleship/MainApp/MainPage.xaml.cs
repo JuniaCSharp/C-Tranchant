@@ -25,11 +25,18 @@ namespace MainApp
     public sealed partial class MainPage : Page
     {
         static public Grid grid;
+        static public Grid carrierGrid;
+        static public Grid submarineGrid;
+
         public MainPage()
         {
             this.InitializeComponent();
             this.InitializeSea();
+            this.InitializeBoats();
         }
+
+        ////////////////////////////////////////// Initializer //////////////////////////////////////////
+
         public void InitializeSea()
         {
             // Init grid object
@@ -64,7 +71,42 @@ namespace MainApp
             SeaBorder.Child = grid;
         }
 
-        public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
+        public void InitializeBoats()
+        {
+            carrierGrid = new Grid();
+            carrierGrid.Name = "CarrierGrid";
+            carrierGrid.VerticalAlignment = VerticalAlignment.Center;
+            carrierGrid.HorizontalAlignment = HorizontalAlignment.Center;
+
+            RowDefinition row = new RowDefinition();
+            row.Height = new GridLength(42);
+            grid.RowDefinitions.Add(row);
+
+            for (int i = 0; i < 5; i++)
+            {
+                ColumnDefinition col = new ColumnDefinition();
+                col.Width = new GridLength(42);
+                carrierGrid.ColumnDefinitions.Add(col); 
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Rectangle rect = new Rectangle();
+                rect.Width = 42;
+                rect.Height = 42;
+                rect.Name = ("C:"+i); // C = Carrier + rectIdx
+                rect.Fill = new SolidColorBrush(Colors.White);
+                Grid.SetColumn(rect, i);
+                Grid.SetRow(rect, 0);
+                carrierGrid.Children.Add(rect);
+            }
+
+            CarrierBorder.Child = carrierGrid;
+        }
+
+            ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
+
+            public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
             String name = rect.Name;
