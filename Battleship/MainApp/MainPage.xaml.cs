@@ -24,7 +24,10 @@ namespace MainApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        static public Grid grid;
+        static public Grid seaGrid;
+
+        static Board board;
+        static public int boardSize = 15;
 
         public MainPage()
         {
@@ -37,36 +40,47 @@ namespace MainApp
 
         public void InitializeSea()
         {
-            // Init grid object
-            grid = new Grid();
-            grid.Name = "SeaGrid";
+            // Init Grid Object
+            seaGrid = new Grid();
+            seaGrid.Name = "SeaGrid";
+            double boardWidth = SeaBorder.Width;
+            double boardHeight = SeaBorder.Height;
+
+            // Init Board Object
+            board = new Board(boardSize, boardSize);
 
             // Create Cols and Rows of our Grid (15x15)
-            for (int i = 0; i < 15; i++){
+            for (int i = 0; i < boardSize; i++){
                 ColumnDefinition col = new ColumnDefinition();
                 RowDefinition row = new RowDefinition();
                 col.Width = new GridLength(42);
                 row.Height = new GridLength(42);
-                grid.ColumnDefinitions.Add(col);
-                grid.RowDefinitions.Add(row);
+                seaGrid.ColumnDefinitions.Add(col);
+                seaGrid.RowDefinitions.Add(row);
             }
 
             // Fill Cols and Rows with Rectangles
-            for (int i = 0; i < 15; i++){
-                for (int j = 0; j < 15; j++){
+            for (int i = 0; i < boardSize; i++){
+                for (int j = 0; j < boardSize; j++){
+                    // Initialize the Rectangle
                     Rectangle rect = new Rectangle();
-                    rect.Width = 42;
-                    rect.Height = 42;
+                    rect.Width = boardWidth / boardSize;
+                    rect.Height = boardHeight / boardSize;
                     rect.Name = (i + ":" + j);
                     rect.Fill = new SolidColorBrush(Colors.White);
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
+                    // Link with handlers
                     rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
+                    //Put it into the Board Object (state 0 == empty cell)
+                    Board.Tile tile = new Board.Tile(rect, "0");
+                    board.addTile(tile, i, j);
+                    // Put it into the grid
                     Grid.SetRow(rect, i);
                     Grid.SetColumn(rect, j);
-                    grid.Children.Add(rect);
+                    seaGrid.Children.Add(rect);
                 }
             }
-            SeaBorder.Child = grid;
+            SeaBorder.Child = seaGrid;
         }
         public void InitializeBoats()
         {
@@ -124,9 +138,9 @@ namespace MainApp
             border.Child = boatGrid;
         }
 
-            ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
+        ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
 
-            public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
+        public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
             String name = rect.Name;

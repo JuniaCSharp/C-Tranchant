@@ -29,7 +29,7 @@
             <RowDefinition Height="165"/>
         </Grid.RowDefinitions>
 
-        <Border x:ConnectionId='4' x:Name="SeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0"  Background="#2f5cb6" RenderTransformOrigin="0.5,0.5" />
+        <Border x:ConnectionId='4' x:Name="SeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0" Width="630" Height="630" Background="#2f5cb6" />
         <Border Grid.Column ="1" Background="#FF040B5B"/>
         <Border Grid.Column ="2" Background="#FF040B5B"/>
         <Border Grid.Row="2" Background="#152951" />
