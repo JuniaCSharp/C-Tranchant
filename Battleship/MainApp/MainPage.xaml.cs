@@ -25,8 +25,6 @@ namespace MainApp
     public sealed partial class MainPage : Page
     {
         static public Grid grid;
-        static public Grid carrierGrid;
-        static public Grid submarineGrid;
 
         public MainPage()
         {
@@ -70,38 +68,60 @@ namespace MainApp
             }
             SeaBorder.Child = grid;
         }
-
         public void InitializeBoats()
         {
-            carrierGrid = new Grid();
-            carrierGrid.Name = "CarrierGrid";
-            carrierGrid.VerticalAlignment = VerticalAlignment.Center;
-            carrierGrid.HorizontalAlignment = HorizontalAlignment.Center;
+            InitializeBoat("carrier", 5, 1, CarrierBorder);
+            InitializeBoat("destroyer", 1, 4, DestroyerBorder);
+            InitializeBoat("submarine1", 1, 3, Submarine1Border);
+            InitializeBoat("submarine2", 3, 1, Submarine2Border);
+            InitializeBoat("torpedo", 1, 2, TorpedoBorder);
+        }
 
-            RowDefinition row = new RowDefinition();
-            row.Height = new GridLength(42);
-            grid.RowDefinitions.Add(row);
+        public void InitializeBoat(string name, int sizeX, int sizeY, Border border)
+        {
+            Grid boatGrid = new Grid();
+            boatGrid.Name = name + "Grid";
+            boatGrid.VerticalAlignment = VerticalAlignment.Center;
+            boatGrid.HorizontalAlignment = HorizontalAlignment.Center;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < sizeX; i++)
             {
                 ColumnDefinition col = new ColumnDefinition();
                 col.Width = new GridLength(42);
-                carrierGrid.ColumnDefinitions.Add(col); 
+                boatGrid.ColumnDefinitions.Add(col);
             }
+            for (int i = 0; i < sizeY; i++)
+            {
+                RowDefinition row = new RowDefinition();
+                row.Height = new GridLength(42);
+                boatGrid.RowDefinitions.Add(row);
+            }
+            
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < sizeX; i++)
             {
                 Rectangle rect = new Rectangle();
                 rect.Width = 42;
                 rect.Height = 42;
-                rect.Name = ("C:"+i); // C = Carrier + rectIdx
+                rect.Name = (name + ":" + i); // C = Carrier + rectIdx
                 rect.Fill = new SolidColorBrush(Colors.White);
+                rect.Stroke = new SolidColorBrush(Colors.DarkGray);
                 Grid.SetColumn(rect, i);
-                Grid.SetRow(rect, 0);
-                carrierGrid.Children.Add(rect);
+                boatGrid.Children.Add(rect);
+            }
+            for (int i = 0; i < sizeY; i++)
+            {
+                Rectangle rect = new Rectangle();
+                rect.Width = 42;
+                rect.Height = 42;
+                rect.Name = (name + ":" + i); // C = Carrier + rectIdx
+                rect.Fill = new SolidColorBrush(Colors.White);
+                rect.Stroke = new SolidColorBrush(Colors.DarkGray);
+                Grid.SetRow(rect, i);
+                boatGrid.Children.Add(rect);
             }
 
-            CarrierBorder.Child = carrierGrid;
+            border.Child = boatGrid;
         }
 
             ////////////////////////////////////////// Event Handlers //////////////////////////////////////////

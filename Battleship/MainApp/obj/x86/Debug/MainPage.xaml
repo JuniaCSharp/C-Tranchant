@@ -37,16 +37,22 @@
         <Border Grid.Column ="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="CadetBlue" ><!--565 x 485-->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="375"/>
+                    <ColumnDefinition Width="275"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="190"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="100"/>
+                    <RowDefinition Height="285"/>
                 </Grid.RowDefinitions>
 
-                <Border x:ConnectionId='14' x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Background="DimGray" />
-                <Border x:ConnectionId='15' x:Name="SubmarineBorder" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="SlateGray" />
+                <Border x:ConnectionId='14' x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DimGray" />
+                <Border x:ConnectionId='15' x:Name="DestroyerBorder" Grid.Row="2" Grid.Column="2" Background="DimGray" />
+                <Border x:ConnectionId='16' x:Name="Submarine1Border" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Background="SlateGray" />
+                <Border x:ConnectionId='17' x:Name="Submarine2Border" Grid.Row="1" Grid.Column="0" Background="SlateGray" />
+                <Border x:ConnectionId='18' x:Name="TorpedoBorder" Grid.Row="1" Grid.Column="1" Background="LightSlateGray" />
+                
             </Grid>
         </Border>
 
