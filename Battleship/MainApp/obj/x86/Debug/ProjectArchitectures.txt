@@ -1,1 +1,1 @@
-C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\MainApp.csproj;x86
+E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\MainApp.csproj;x86

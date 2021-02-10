@@ -47,35 +47,34 @@
                     <RowDefinition Height="285"/>
                 </Grid.RowDefinitions>
 
-                <Border x:ConnectionId='14' x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DimGray" />
-                <Border x:ConnectionId='15' x:Name="DestroyerBorder" Grid.Row="2" Grid.Column="2" Background="DimGray" />
-                <Border x:ConnectionId='16' x:Name="Submarine1Border" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Background="SlateGray" />
-                <Border x:ConnectionId='17' x:Name="Submarine2Border" Grid.Row="1" Grid.Column="0" Background="SlateGray" />
-                <Border x:ConnectionId='18' x:Name="TorpedoBorder" Grid.Row="1" Grid.Column="1" Background="LightSlateGray" />
+                <Border x:ConnectionId='13' x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DimGray" />
+                <Border x:ConnectionId='14' x:Name="DestroyerBorder" Grid.Row="2" Grid.Column="2" Background="DimGray" />
+                <Border x:ConnectionId='15' x:Name="Submarine1Border" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Background="SlateGray" />
+                <Border x:ConnectionId='16' x:Name="Submarine2Border" Grid.Row="1" Grid.Column="0" Background="SlateGray" />
+                <Border x:ConnectionId='17' x:Name="TorpedoBorder" Grid.Row="1" Grid.Column="1" Background="LightSlateGray" />
                 
             </Grid>
         </Border>
 
         <StackPanel Grid.Column="1" Margin="40,20,40,20" HorizontalAlignment="Left">
-            <TextBox x:ConnectionId='12' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_X" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox x:ConnectionId='13' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="nbTotalImpacts" Header="Impacts"  Foreground="White" Text="0" IsReadOnly="True"/>
+            <TextBox x:ConnectionId='11' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_X" Header ="Ligne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBox x:ConnectionId='12' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="nbTotalImpacts" Header="Impacts"  Foreground="White" Text="0" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40,20,40,20" HorizontalAlignment="Right">
-            <TextBox x:ConnectionId='9' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox x:ConnectionId='10' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBoxRemainingShots" Foreground="White" Header ="Tirs restants" Text="" IsReadOnly="True"/>
-            <TextBox x:ConnectionId='11' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="Level" Header="Niveau" Foreground="White" Text="1"/>
+            <TextBox x:ConnectionId='8' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBox1_Y" Header ="Colonne" Text="1"  Foreground="White" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBox x:ConnectionId='9' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="textBoxRemainingShots" Foreground="White" Header ="Tirs restants" Text="" IsReadOnly="True"/>
+            <TextBox x:ConnectionId='10' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="Level" Header="Niveau" Foreground="White" Text="1"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,20,40,20" HorizontalAlignment="Left">
             <TextBox HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" Foreground="White" Header ="Visibilité :" Text="Ouragan" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,20,40,20" HorizontalAlignment="Right">
-            <TextBox x:ConnectionId='8' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="TextBoxStatus" Foreground ="White" Header="Résultat tir :" IsReadOnly="True"/>
+            <TextBox x:ConnectionId='7' HeaderTemplate="{StaticResource TextBoxHeaderTemplate1}" x:Name="TextBoxStatus" Foreground ="White" Header="Résultat tir :" IsReadOnly="True"/>
         </StackPanel>
 
         <TextBox x:ConnectionId='5' x:Name="textBox1" HorizontalAlignment="Left" Margin="3917,1076,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button x:ConnectionId='6' x:Name="StartButton" Content="Play" Grid.Column="0" Grid.Row="2"  Margin="388,43,0,0" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6"                           VerticalAlignment="Top"/>
-        <Image x:ConnectionId='7' x:Name="image" HorizontalAlignment="Left" Height="200" Grid.Row="1" VerticalAlignment="Center" Width="123" Source="/Assets/battleship-uss-iowa-1080P-wallpaper-middle-size.png" Stretch="Fill"/>
 
     </Grid>
 </Page>
