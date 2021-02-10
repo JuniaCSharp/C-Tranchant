@@ -75,6 +75,7 @@
 
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="3917,1076,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button x:Name="StartButton" Content="Play" Grid.Column="0" Grid.Row="2"  Margin="388,43,0,0" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6" Click="StartButton_Click" VerticalAlignment="Top"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="200" Grid.Row="1" VerticalAlignment="Center" Width="123" Source="/Assets/battleship-uss-iowa-1080P-wallpaper-middle-size.png" Stretch="Fill"/>
 
     </Grid>
 </Page>
