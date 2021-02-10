@@ -215,6 +215,9 @@ namespace MainApp
             {
                 rect.Fill = new SolidColorBrush(Colors.Red);
 
+                // TODO : put the boat into boat list of the board to avoid doublon and set topLeftPosX and topLeftPosY of Boat
+                // + delete exit event on the board + Previsualisation of the placement 
+
                 selectedBoat = null;
                 selectedBoatIdx = -1;
             } 
