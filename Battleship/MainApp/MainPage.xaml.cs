@@ -30,6 +30,9 @@ namespace MainApp
         static public Board enemyBoard;
         static public int boardSize = 10;
 
+        static public Boat selectedBoat;
+        static public int selectedBoadIdx;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -177,7 +180,21 @@ namespace MainApp
         {
             Rectangle rect = (Rectangle)sender;
             rect.PointerExited -= new PointerEventHandler(Boat_PointerExited);
+
+            // Get the name of the clicked boat
+            Grid grid = (Grid)rect.Parent;
+            string boatName = grid.Name.Split("Grid")[0];
             rect.Fill = new SolidColorBrush(Colors.Red);
+
+            // Depending on the name we create the boat object and put it in selectedBoat
+            selectedBoat = boatName == "carrier"  ? new Boat("carrier", 5, 1) : selectedBoat;
+            selectedBoat = boatName == "destroyer" ? new Boat("destroyer", 1, 4) : selectedBoat;
+            selectedBoat = boatName == "submarine1" ? new Boat("submarine1", 1, 3) : selectedBoat;
+            selectedBoat = boatName == "submarine2" ? new Boat("submarine2", 3, 1) : selectedBoat;
+            selectedBoat = boatName == "torpedo" ? new Boat("torpedo", 1, 2) : selectedBoat;
+
+            selectedBoadIdx = Int32.Parse(rect.Name.Split(":")[1]);
+
         }
 
         public void StartButton_Click(object sender, RoutedEventArgs e)
