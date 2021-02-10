@@ -17,7 +17,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid x:Name="layoutRoot" Margin="0,0,0,0">
+    <Grid x:Name="layoutRoot" Margin="0,0,0,0" Background="#FF040B5B">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="635"/>
             <ColumnDefinition Width="285"/>
@@ -29,12 +29,19 @@
             <RowDefinition Height="165"/>
         </Grid.RowDefinitions>
 
-        <Border x:Name="SeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0" Width="630" Height="630" Background="#2f5cb6" />
+        <Border x:Name="EnemySeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0" Background="#2f5cb6" Width="635" Height="635"/>
         <Border Grid.Column ="1" Background="#FF040B5B"/>
         <Border Grid.Column ="2" Background="#FF040B5B"/>
-        <Border Grid.Row="2" Background="#152951" />
 
-        <Border Grid.Column ="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="CadetBlue" ><!--565 x 485-->
+        <Border x:Name="MySeaBorder" Grid.Row ="1" Grid.Column ="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#6489D7" Height="485" Width="485" Margin="80,0,0,0"/>
+        <Border Grid.Column ="1" Background="#FF040B5B"/>
+        <Border Grid.Column ="2" Background="#FF040B5B"/>
+
+
+
+        <Border Grid.Column ="0" Grid.Row="2
+                " Background="CadetBlue" >
+            <!--565 x 485-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="275"/>
@@ -47,12 +54,12 @@
                     <RowDefinition Height="285"/>
                 </Grid.RowDefinitions>
 
-                <Border x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DimGray" />
-                <Border x:Name="DestroyerBorder" Grid.Row="2" Grid.Column="2" Background="DimGray" />
-                <Border x:Name="Submarine1Border" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Background="SlateGray" />
-                <Border x:Name="Submarine2Border" Grid.Row="1" Grid.Column="0" Background="SlateGray" />
-                <Border x:Name="TorpedoBorder" Grid.Row="1" Grid.Column="1" Background="LightSlateGray" />
-                
+                <Border x:Name="CarrierBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DimGray" Margin="0,0,0,10" />
+                <Border x:Name="DestroyerBorder" Grid.Column="2" Background="DimGray" Margin="131,0,-70,36" Grid.RowSpan="2" />
+                <Border x:Name="Submarine1Border" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Background="SlateGray" Margin="0,0,59,36" />
+                <Border x:Name="Submarine2Border" Grid.Column="0" Background="SlateGray" Margin="0,90,0,36" Grid.RowSpan="2" />
+                <Border x:Name="TorpedoBorder" Grid.Column="1" Background="LightSlateGray" Margin="0,90,0,36" Grid.RowSpan="2" />
+
             </Grid>
         </Border>
 
@@ -74,8 +81,7 @@
         </StackPanel>
 
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="3917,1076,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="StartButton" Content="Play" Grid.Column="0" Grid.Row="2"  Margin="388,43,0,0" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6" Click="StartButton_Click" VerticalAlignment="Top"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="200" Grid.Row="1" VerticalAlignment="Center" Width="123" Source="/Assets/battleship-uss-iowa-1080P-wallpaper-middle-size.png" Stretch="Fill"/>
+        <Button x:Name="StartButton" Content="Play" Grid.Column="2"  Margin="28,118,0,0" Height="62" Width="212" FontSize="22" Background="#3329F54E" Foreground="#FF70F1E6" Click="StartButton_Click" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

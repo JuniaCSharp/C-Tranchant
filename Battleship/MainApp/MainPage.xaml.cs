@@ -26,25 +26,28 @@ namespace MainApp
     {
         static public Grid seaGrid;
 
-        static Board board;
+        static public Board myBoard;
+        static public Board enemyBoard;
         static public int boardSize = 10;
 
         public MainPage()
         {
             this.InitializeComponent();
-            this.InitializeSea();
+            this.InitializeSea(MySeaBorder, myBoard);
+            this.InitializeSea(EnemySeaBorder, enemyBoard);
             this.InitializeBoats();
         }
 
         ////////////////////////////////////////// Initializer //////////////////////////////////////////
 
-        public void InitializeSea()
+        public void InitializeSea(Border border, Board board)
         {
             // Init Grid Object
+            
             seaGrid = new Grid();
             seaGrid.Name = "SeaGrid";
-            double boardWidth = SeaBorder.Width;
-            double boardHeight = SeaBorder.Height;
+            double boardWidth = border.Width;
+            double boardHeight = border.Height;
 
             // Init Board Object
             board = new Board(boardSize, boardSize);
@@ -80,7 +83,7 @@ namespace MainApp
                     seaGrid.Children.Add(rect);
                 }
             }
-            SeaBorder.Child = seaGrid;
+            border.Child = seaGrid;
         }
         public void InitializeBoats()
         {
