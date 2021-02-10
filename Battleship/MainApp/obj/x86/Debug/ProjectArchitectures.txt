@@ -1,1 +1,0 @@
-E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\MainApp.csproj;x86
