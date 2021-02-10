@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-72TVIR5</Machine>
-    <WindowsUser>Batou</WindowsUser>
+    <Machine>DESKTOP-NBO8GQE</Machine>
+    <WindowsUser>user</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>b330d7f7-ce1a-4860-902e-e1c6d59959c7</PackageIdentityName>
     <PackageIdentityPublisher>CN=William</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainApp.exe">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainApp.exe">
       <PackagePath>entrypoint\MainApp.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
@@ -34,52 +34,52 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainApp.xr.xml">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainApp.xr.xml">
       <PackagePath>MainApp.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\Core\MainApp.exe">
+    <AppxPackagedFile Include="E:\Desktop\M1\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\Core\MainApp.exe">
       <PackagePath>MainApp.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

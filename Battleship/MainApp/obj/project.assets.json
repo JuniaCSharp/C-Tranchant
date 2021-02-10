@@ -8151,24 +8151,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Batou\\.nuget\\packages\\": {},
+    "C:\\Users\\user\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Batou\\OneDrive - yncréa\\Cours\\M1\\S2\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
+      "projectUniqueName": "E:\\Desktop\\M1\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
       "projectName": "MainApp",
-      "projectPath": "C:\\Users\\Batou\\OneDrive - yncréa\\Cours\\M1\\S2\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
-      "packagesPath": "C:\\Users\\Batou\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Batou\\OneDrive - yncréa\\Cours\\M1\\S2\\CSharp\\C-Tranchant\\Battleship\\MainApp\\obj\\",
+      "projectPath": "E:\\Desktop\\M1\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "E:\\Desktop\\M1\\CSharp\\C-Tranchant\\Battleship\\MainApp\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Batou\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "E:\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

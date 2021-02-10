@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fn9la4BcssEBRRxxuoeJZNqs8+azh3lcNsunCl4W6GOxb37elTzw5BU2HSclh3fLNkzKFz+fql/eSh1Vch0snQ==",
+  "dgSpecHash": "DbBVApQOdQP15TaREf3WQ2IUF858kfDXI8SE5Cg5o4m3IrtytbAKYbf8crWb1tf+KF4bnNVY/qtkquYpsP3ZQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Batou\\OneDrive - yncréa\\Cours\\M1\\S2\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
+  "projectFilePath": "E:\\Desktop\\M1\\CSharp\\C-Tranchant\\Battleship\\MainApp\\MainApp.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.native.compiler\\2.2.8-rel-28605-00\\microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.uwpcoreruntimesdk\\2.2.10\\microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
