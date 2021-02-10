@@ -31,20 +31,28 @@
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Modified>2021-02-10T10:24:34.904</Modified>
 =======
       <Modified>2021-02-10T09:29:56.057</Modified>
 >>>>>>> parent of e2a0402 (Image UI Fix)
+=======
+      <Modified>2021-02-10T09:41:32.196</Modified>
+>>>>>>> parent of d32edd0 (Hover on boat added)
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainApp.exe">
       <PackagePath>entrypoint\MainApp.exe</PackagePath>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Modified>2021-02-10T10:24:34.526</Modified>
 =======
       <Modified>2021-02-10T09:29:55.377</Modified>
 >>>>>>> parent of e2a0402 (Image UI Fix)
+=======
+      <Modified>2021-02-10T09:41:31.520</Modified>
+>>>>>>> parent of d32edd0 (Hover on boat added)
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -99,18 +107,26 @@
     <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
 <<<<<<< HEAD
-      <Modified>2021-02-10T10:23:53.074</Modified>
-=======
-      <Modified>2021-02-10T09:29:55.281</Modified>
->>>>>>> parent of e2a0402 (Image UI Fix)
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainPage.xbf">
-      <PackagePath>MainPage.xbf</PackagePath>
 <<<<<<< HEAD
       <Modified>2021-02-10T10:23:53.074</Modified>
 =======
       <Modified>2021-02-10T09:29:55.281</Modified>
 >>>>>>> parent of e2a0402 (Image UI Fix)
+=======
+      <Modified>2021-02-10T09:41:31.404</Modified>
+>>>>>>> parent of d32edd0 (Hover on boat added)
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <Modified>2021-02-10T10:23:53.074</Modified>
+=======
+      <Modified>2021-02-10T09:29:55.281</Modified>
+>>>>>>> parent of e2a0402 (Image UI Fix)
+=======
+      <Modified>2021-02-10T09:41:31.405</Modified>
+>>>>>>> parent of d32edd0 (Hover on boat added)
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -123,10 +139,14 @@
     <AppxPackagedFile Include="C:\Users\Batou\OneDrive - yncréa\Cours\M1\S2\CSharp\C-Tranchant\Battleship\MainApp\bin\x86\Debug\Core\MainApp.exe">
       <PackagePath>MainApp.exe</PackagePath>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Modified>2021-02-10T10:24:34.900</Modified>
 =======
       <Modified>2021-02-10T09:29:56.046</Modified>
 >>>>>>> parent of e2a0402 (Image UI Fix)
+=======
+      <Modified>2021-02-10T09:41:32.187</Modified>
+>>>>>>> parent of d32edd0 (Hover on boat added)
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
