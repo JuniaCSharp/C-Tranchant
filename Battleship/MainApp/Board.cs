@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace MainApp
 {
-    class Board
+    public class Board
     {
         public struct Tile
         {
