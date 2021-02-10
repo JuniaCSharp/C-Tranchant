@@ -27,7 +27,7 @@ namespace MainApp
         static public Grid seaGrid;
 
         static Board board;
-        static public int boardSize = 15;
+        static public int boardSize = 10;
 
         public MainPage()
         {
@@ -53,8 +53,8 @@ namespace MainApp
             for (int i = 0; i < boardSize; i++){
                 ColumnDefinition col = new ColumnDefinition();
                 RowDefinition row = new RowDefinition();
-                col.Width = new GridLength(42);
-                row.Height = new GridLength(42);
+                col.Width = new GridLength(boardWidth / boardSize);
+                row.Height = new GridLength(boardHeight / boardSize);
                 seaGrid.ColumnDefinitions.Add(col);
                 seaGrid.RowDefinitions.Add(row);
             }
