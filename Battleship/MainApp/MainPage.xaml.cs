@@ -33,7 +33,6 @@ namespace MainApp
         {
             this.InitializeComponent();
             this.InitializeSea();
-            
             this.InitializeBoats();
         }
 
@@ -121,8 +120,6 @@ namespace MainApp
                 rect.Name = (name + ":" + i); // C = Carrier + rectIdx
                 rect.Fill = new SolidColorBrush(Colors.White);
                 rect.Stroke = new SolidColorBrush(Colors.DarkGray);
-                rect.PointerEntered += new PointerEventHandler(Boat_PointerEntered);
-                rect.PointerPressed += new PointerEventHandler(Boat_PointerPressed);
                 Grid.SetColumn(rect, i);
                 boatGrid.Children.Add(rect);
             }
@@ -134,8 +131,6 @@ namespace MainApp
                 rect.Name = (name + ":" + i); // C = Carrier + rectIdx
                 rect.Fill = new SolidColorBrush(Colors.White);
                 rect.Stroke = new SolidColorBrush(Colors.DarkGray);
-                rect.PointerEntered += new PointerEventHandler(Boat_PointerEntered);
-                rect.PointerPressed += new PointerEventHandler(Boat_PointerPressed);
                 Grid.SetRow(rect, i);
                 boatGrid.Children.Add(rect);
             }
@@ -156,25 +151,6 @@ namespace MainApp
             textBox1_X.Text = x.ToString();
             textBox1_Y.Text = y.ToString();
 
-            rect.Fill = new SolidColorBrush(Colors.Red);
-        }
-
-        public void Boat_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Rectangle rect = (Rectangle)sender;
-            rect.PointerExited += new PointerEventHandler(Boat_PointerExited);
-            rect.Fill = new SolidColorBrush(Colors.Red);
-        }
-        public void Boat_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Rectangle rect = (Rectangle)sender;
-            rect.PointerExited -= new PointerEventHandler(Boat_PointerExited);
-            rect.Fill = new SolidColorBrush(Colors.White);
-        }
-        public void Boat_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            Rectangle rect = (Rectangle)sender;
-            rect.PointerExited -= new PointerEventHandler(Boat_PointerExited);
             rect.Fill = new SolidColorBrush(Colors.Red);
         }
 
