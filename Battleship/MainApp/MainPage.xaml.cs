@@ -26,19 +26,23 @@ namespace MainApp
     {
         static public Grid seaGrid;
 
-        static public Board myBoard;
-        static public Board enemyBoard;
+        public Board myBoard = new Board(boardSize, boardSize);
+        static public Board enemyBoard = new Board(boardSize, boardSize);
         static public int boardSize = 10;
 
         static public Boat selectedBoat;
-        static public int selectedBoadIdx;
+        static public int selectedBoatIdx;
 
         public MainPage()
         {
+            selectedBoat = null;
+            selectedBoatIdx = -1;
+
             this.InitializeComponent();
             this.InitializeSea(MySeaBorder, myBoard);
             this.InitializeSea(EnemySeaBorder, enemyBoard);
             this.InitializeBoats();
+            Board.Tile[,] bt = myBoard.B;
         }
 
         ////////////////////////////////////////// Initializer //////////////////////////////////////////
@@ -51,9 +55,6 @@ namespace MainApp
             seaGrid.Name = "SeaGrid";
             double boardWidth = border.Width;
             double boardHeight = border.Height;
-
-            // Init Board Object
-            board = new Board(boardSize, boardSize);
 
             // Create Cols and Rows of our Grid (15x15)
             for (int i = 0; i < boardSize; i++){
@@ -77,6 +78,8 @@ namespace MainApp
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
                     // Link with handlers
                     rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
+                    rect.PointerEntered += new PointerEventHandler(Rectangle_PointerEntered);
+                    rect.PointerExited += new PointerEventHandler(Rectangle_PointerExited);
                     //Put it into the Board Object (state 0 == empty cell)
                     Board.Tile tile = new Board.Tile(rect, "0");
                     board.addTile(tile, i, j);
@@ -148,6 +151,50 @@ namespace MainApp
             border.Child = boatGrid;
         }
 
+        public bool CheckBoatPlacement(Board.Tile[,] board, int x, int y, Boat boat, int idx)
+        {
+            // If the boat is vertical
+            if (boat.width == 1)
+            {
+                // check if the boat placement is allowed
+                if (x < boardSize && x >= 0 && y + (boat.height - selectedBoatIdx - 1) < boardSize && y - (selectedBoatIdx) >= 0)
+                {
+                    for (int i = 0; i < boat.width - 1; i++)
+                    {
+                        for (int j = 0; j < boat.height - 1; j++)
+                        {
+                            if (board[x + i, y + j].state != "0")
+                            {
+                                return false;
+                            }
+                            board[x + i, y + j].state = "1:" + boat.name;
+                        }
+                    }
+                }
+                else { return false; }
+            }
+            else if (boat.height == 1)
+            {
+                // check if the boat placement is allowed
+                if (x + (boat.width - selectedBoatIdx - 1) < boardSize && x - (selectedBoatIdx) >= 0 && y  < boardSize && y >= 0)
+                {
+                    for (int i = 0; i < boat.width - 1; i++)
+                    {
+                        for (int j = 0; j < boat.height - 1; j++)
+                        {
+                            if (board[x + i, y + j].state != "0")
+                            {
+                                return false;
+                            }
+                            board[x + i, y + j].state = "1:" + boat.name;
+                        }
+                    }
+                }
+                else { return false; }
+            }
+                return true;
+        }
+
         ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
 
         public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -161,7 +208,34 @@ namespace MainApp
             textBox1_X.Text = x.ToString();
             textBox1_Y.Text = y.ToString();
 
-            rect.Fill = new SolidColorBrush(Colors.Red);
+            Board.Tile[,] bt = myBoard.B;
+
+            // if the user want to place a boat
+            if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, y, x, selectedBoat, selectedBoatIdx))
+            {
+                rect.Fill = new SolidColorBrush(Colors.Red);
+
+                selectedBoat = null;
+                selectedBoatIdx = -1;
+            } 
+        }
+        public void Rectangle_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Rectangle rect = (Rectangle)sender;
+
+            if (selectedBoatIdx != -1)
+            {
+                rect.Fill = new SolidColorBrush(Colors.DimGray);
+            }
+        }
+        public void Rectangle_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Rectangle rect = (Rectangle)sender;
+
+            if (selectedBoatIdx != -1)
+            {
+                rect.Fill = new SolidColorBrush(Colors.White);
+            }
         }
 
         public void Boat_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -193,7 +267,7 @@ namespace MainApp
             selectedBoat = boatName == "submarine2" ? new Boat("submarine2", 3, 1) : selectedBoat;
             selectedBoat = boatName == "torpedo" ? new Boat("torpedo", 1, 2) : selectedBoat;
 
-            selectedBoadIdx = Int32.Parse(rect.Name.Split(":")[1]);
+            selectedBoatIdx = Int32.Parse(rect.Name.Split(":")[1]);
 
         }
 

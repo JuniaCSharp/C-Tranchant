@@ -21,25 +21,13 @@ namespace MainApp
         }
 
         static public Tile[,] b;
+        public Tile[,] B => b;
         static public List<Boat> boats;
+
 
         public Board(int width, int height) => b = new Tile[width, height];
         public void addTile(Tile t, int x, int y) => b[x, y] = t;
-        public void addBoat(Boat boat)
-        {
-            // check if the boat placement is allowed
-            for(int i = 0; i < boat.width; i++){
-                for(int j = 0; j < boat.height; j++){
-                    if(b[boat.topLeftPosX + i, boat.topLeftPosY + j].state != "0")
-                    {
-                        throw new Exception();
-                    }
-                    b[boat.topLeftPosX + i, boat.topLeftPosY + j].state = "1:" + boat.name;
-                }
-            }
-            boats.Add(boat);
-        }
-
+        public void addBoat(Boat boat) => boats.Add(boat);
     }
 
     public class Boat
