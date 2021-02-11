@@ -167,15 +167,11 @@ namespace MainApp
                 // check if the boat placement is allowed
                 if (x < boardSize && x >= 0 && y + (boat.height - selectedBoatIdx - 1) < boardSize && y - (selectedBoatIdx) >= 0)
                 {
-                    for (int i = 0; i < boat.width - 1; i++)
+                    for (int i = 0; i < Math.Max(boat.width, boat.height); i++)
                     {
-                        for (int j = 0; j < boat.height - 1; j++)
+                        if (board[y - idx + i, x].state != "0")
                         {
-                            if (board[x + i, y + j].state != "0")
-                            {
-                                return false;
-                            }
-                            board[x + i, y + j].state = "1:" + boat.name;
+                            return false;
                         }
                     }
                 }
@@ -186,15 +182,11 @@ namespace MainApp
                 // check if the boat placement is allowed
                 if (x + (boat.width - selectedBoatIdx - 1) < boardSize && x - (selectedBoatIdx) >= 0 && y  < boardSize && y >= 0)
                 {
-                    for (int i = 0; i < boat.width - 1; i++)
+                    for (int i = 0; i < Math.Max(boat.width, boat.height); i++)
                     {
-                        for (int j = 0; j < boat.height - 1; j++)
+                        if (board[y , x - idx + i].state != "0")
                         {
-                            if (board[x + i, y + j].state != "0")
-                            {
-                                return false;
-                            }
-                            board[x + i, y + j].state = "1:" + boat.name;
+                            return false;
                         }
                     }
                 }
@@ -213,18 +205,38 @@ namespace MainApp
             int x = Int32.Parse(splittedName[0].ToString());
             int y = Int32.Parse(splittedName[1].ToString());
 
+            Board.Tile[,] t = myBoard.B;
             Border boatBorder = BoatNameToBoatBorder[selectedBoat.name];
             Grid boatGrid = (Grid)boatBorder.Child;
 
             // if the user want to place a boat
             if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
             {
-                rect.Fill = new SolidColorBrush(Colors.DimGray);
+                // Place the boat on the board
+                if (selectedBoat.width == 1)
+                {
+                    for (int i = 0; i < selectedBoat.height; i++)
+                    {
+                        if (y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize)
+                        {
+                            t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.DimGray);
+                            t[y - selectedBoatIdx + i, x].state = "1:" + name;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < selectedBoat.width; i++)
+                    {
+                        if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize)
+                        {
+                            t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.DimGray);
+                            t[y , x - selectedBoatIdx + i].state = "1:" + selectedBoat.name;
+                        }
+                    }
+                }
 
-                // TODO : put the boat into boat list of the board to avoid doublon and set topLeftPosX and topLeftPosY of Boat
-                // + delete exit event on the board + Previsualisation of the placement 
-
-                // Hide the boat is placement is succesful
+                // Hide the boat if placement is succesful
                 boatGrid.Visibility = Visibility.Collapsed;
 
                 if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
@@ -250,7 +262,7 @@ namespace MainApp
                 {
                     for(int i = 0; i < selectedBoat.height; i++)
                     {
-                        if(y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize)
+                        if(y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize && t[y - selectedBoatIdx + i, x].state == "0")
                         {
                             t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.LightGray);
                         }
@@ -260,7 +272,7 @@ namespace MainApp
                 {
                     for (int i = 0; i < selectedBoat.width; i++)
                     {
-                        if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize)
+                        if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize && t[y, x - selectedBoatIdx + i].state == "0")
                         {
                             t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.LightGray);
                         }
@@ -273,7 +285,6 @@ namespace MainApp
             Rectangle rect = (Rectangle)sender;
             Board.Tile[,] t = myBoard.B;
             SolidColorBrush fillBrush = new SolidColorBrush(Colors.LightGray);
-
 
             foreach (Board.Tile tile in t)
             {
