@@ -206,12 +206,13 @@ namespace MainApp
             int y = Int32.Parse(splittedName[1].ToString());
 
             Board.Tile[,] t = myBoard.B;
-            Border boatBorder = BoatNameToBoatBorder[selectedBoat.name];
-            Grid boatGrid = (Grid)boatBorder.Child;
 
             // if the user want to place a boat
             if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
             {
+                Border boatBorder = BoatNameToBoatBorder[selectedBoat.name];
+                Grid boatGrid = (Grid)boatBorder.Child;
+
                 // Place the boat on the board
                 if (selectedBoat.width == 1)
                 {
