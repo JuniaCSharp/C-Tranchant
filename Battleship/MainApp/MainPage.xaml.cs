@@ -351,7 +351,10 @@ namespace MainApp
             // Get the name of the clicked boat
             Grid grid = (Grid)rect.Parent;
             string boatName = grid.Name.Split("Grid")[0];
-            rect.Fill = new SolidColorBrush(Colors.DimGray);
+            foreach (Rectangle item in grid.Children)
+            {
+                item.Fill = new SolidColorBrush(Colors.Green);
+            }
 
             // Depending on the name we create the boat object and put it in selectedBoat
             selectedBoat = boatName == "carrier"  ? new Boat("carrier", 5, 1) : selectedBoat;
@@ -361,6 +364,7 @@ namespace MainApp
             selectedBoat = boatName == "torpedo" ? new Boat("torpedo", 1, 2) : selectedBoat;
 
             selectedBoatIdx = Int32.Parse(rect.Name.Split(":")[1]);
+            ClearBoatColor(selectedBoat);
 
         }
 
@@ -373,6 +377,25 @@ namespace MainApp
         private void KeyPressed(object sender, KeyRoutedEventArgs e)
         {
             Windows.System.VirtualKey k = e.Key;
+        }
+
+        private void ClearBoatColor(Boat boat)
+        {
+            List<string> boatList = new List<string> { "carrier", "destroyer", "submarine1", "submarine2", "torpedo" };
+
+            foreach (string item in boatList)
+            {
+                if(item != boat.name)
+                {
+                    Border border = BoatNameToBoatBorder[item];
+                    Grid grid = (Grid)border.Child;
+                    foreach (Rectangle rect in grid.Children)
+                    {
+                        rect.Fill = new SolidColorBrush(Colors.White);
+                    }
+                }
+            }
+
         }
     }
 }
