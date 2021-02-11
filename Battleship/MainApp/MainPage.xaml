@@ -30,10 +30,8 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="EnemySeaBorder" Grid.Row ="0" Grid.RowSpan="2"  Grid.Column ="0" Background="#2f5cb6" Width="635" Height="635"/>
-        <Border Grid.Column ="1" Background="#FF040B5B"/>
-        <Border Grid.Column ="2" Background="#FF040B5B"/>
-
         <Border x:Name="MySeaBorder" Grid.Row ="1" Grid.Column ="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#6489D7" Height="485" Width="485" Margin="80,0,0,0"/>
+        
         <Border Grid.Column ="1" Background="#FF040B5B"/>
         <Border Grid.Column ="2" Background="#FF040B5B"/>
 

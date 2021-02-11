@@ -27,7 +27,7 @@ namespace MainApp
         static public Grid seaGrid;
 
         public Board myBoard = new Board(boardSize, boardSize);
-        static public Board enemyBoard = new Board(boardSize, boardSize);
+        public Board enemyBoard = new Board(boardSize, boardSize);
         static public int boardSize = 10;
 
         static public Boat selectedBoat;
@@ -41,8 +41,8 @@ namespace MainApp
             selectedBoatIdx = -1;
 
             this.InitializeComponent();
-            this.InitializeSea(MySeaBorder, myBoard);
             this.InitializeSea(EnemySeaBorder, enemyBoard);
+            this.InitializeSea(MySeaBorder, myBoard);
             this.InitializeBoats();
 
             // Init the dictionnary
@@ -60,7 +60,7 @@ namespace MainApp
             // Init Grid Object
             
             seaGrid = new Grid();
-            seaGrid.Name = "SeaGrid";
+            seaGrid.Name = "SeaGrid" + border.Name;
             double boardWidth = border.Width;
             double boardHeight = border.Height;
 
@@ -85,9 +85,13 @@ namespace MainApp
                     rect.Fill = new SolidColorBrush(Colors.White);
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
                     // Link with handlers
-                    rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
-                    rect.PointerEntered += new PointerEventHandler(Rectangle_PointerEntered);
-                    rect.PointerExited += new PointerEventHandler(Rectangle_PointerExited);
+                    if (border.Name == "MySeaBorder")
+                    {
+                        rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
+                        rect.PointerEntered += new PointerEventHandler(Rectangle_PointerEntered);
+                        rect.PointerExited += new PointerEventHandler(Rectangle_PointerExited);
+                    }
+                        
                     //Put it into the Board Object (state 0 == empty cell)
                     Board.Tile tile = new Board.Tile(rect, "0");
                     board.addTile(tile, i, j);
