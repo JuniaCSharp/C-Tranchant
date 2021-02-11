@@ -262,19 +262,40 @@ namespace MainApp
                 {
                     for(int i = 0; i < selectedBoat.height; i++)
                     {
-                        if(y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize && t[y - selectedBoatIdx + i, x].state == "0")
+                        if(CheckBoatPlacement(t, x, y, selectedBoat, selectedBoatIdx))
                         {
-                            t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                            if (y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize && t[y - selectedBoatIdx + i, x].state == "0")
+                            {
+                                t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                            }
                         }
+                        else
+                        {
+                            if (y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize && t[y - selectedBoatIdx + i, x].state == "0")
+                            {
+                                t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.OrangeRed);
+                            }
+                        }
+                        
                     }
                 }
                 else
                 {
                     for (int i = 0; i < selectedBoat.width; i++)
                     {
-                        if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize && t[y, x - selectedBoatIdx + i].state == "0")
+                        if (CheckBoatPlacement(t, x, y, selectedBoat, selectedBoatIdx))
                         {
-                            t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                            if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize && t[y, x - selectedBoatIdx + i].state == "0")
+                            {
+                                t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                            }
+                        }
+                        else
+                        {
+                            if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize && t[y, x - selectedBoatIdx + i].state == "0")
+                            {
+                                t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.OrangeRed);
+                            }
                         }
                     }
                 }
@@ -284,12 +305,13 @@ namespace MainApp
         {
             Rectangle rect = (Rectangle)sender;
             Board.Tile[,] t = myBoard.B;
-            SolidColorBrush fillBrush = new SolidColorBrush(Colors.LightGray);
+            SolidColorBrush fillBrush1 = new SolidColorBrush(Colors.LightGray);
+            SolidColorBrush fillBrush2 = new SolidColorBrush(Colors.OrangeRed);
 
             foreach (Board.Tile tile in t)
             {
                 SolidColorBrush rectFillBrush = (SolidColorBrush)tile.rect.Fill;
-                if (rectFillBrush.Color == fillBrush.Color)
+                if (rectFillBrush.Color == fillBrush1.Color || rectFillBrush.Color == fillBrush2.Color)
                 {
                     tile.rect.Fill = new SolidColorBrush(Colors.White);
                 }
