@@ -33,6 +33,8 @@ namespace MainApp
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
 
+        public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
+
         public MainPage()
         {
             selectedBoat = null;
@@ -42,7 +44,13 @@ namespace MainApp
             this.InitializeSea(MySeaBorder, myBoard);
             this.InitializeSea(EnemySeaBorder, enemyBoard);
             this.InitializeBoats();
-            Board.Tile[,] bt = myBoard.B;
+
+            // Init the dictionnary
+            BoatNameToBoatBorder.Add("carrier", CarrierBorder);
+            BoatNameToBoatBorder.Add("destroyer", DestroyerBorder);
+            BoatNameToBoatBorder.Add("submarine1", Submarine1Border);
+            BoatNameToBoatBorder.Add("submarine2", Submarine2Border);
+            BoatNameToBoatBorder.Add("torpedo", TorpedoBorder);;
         }
 
         ////////////////////////////////////////// Initializer //////////////////////////////////////////
@@ -73,7 +81,7 @@ namespace MainApp
                     Rectangle rect = new Rectangle();
                     rect.Width = boardWidth / boardSize;
                     rect.Height = boardHeight / boardSize;
-                    rect.Name = (i + ":" + j);
+                    rect.Name = (j + ":" + i);
                     rect.Fill = new SolidColorBrush(Colors.White);
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
                     // Link with handlers
@@ -205,18 +213,23 @@ namespace MainApp
             int x = Int32.Parse(splittedName[0].ToString());
             int y = Int32.Parse(splittedName[1].ToString());
 
-            textBox1_X.Text = x.ToString();
-            textBox1_Y.Text = y.ToString();
-
-            Board.Tile[,] bt = myBoard.B;
+            Border boatBorder = BoatNameToBoatBorder[selectedBoat.name];
+            Grid boatGrid = (Grid)boatBorder.Child;
 
             // if the user want to place a boat
-            if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, y, x, selectedBoat, selectedBoatIdx))
+            if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
             {
-                rect.Fill = new SolidColorBrush(Colors.Red);
+                rect.Fill = new SolidColorBrush(Colors.DimGray);
 
                 // TODO : put the boat into boat list of the board to avoid doublon and set topLeftPosX and topLeftPosY of Boat
                 // + delete exit event on the board + Previsualisation of the placement 
+
+                // Hide the boat is placement is succesful
+                boatGrid.Visibility = Visibility.Collapsed;
+
+                if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
+                else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
+                myBoard.addBoat(selectedBoat);
 
                 selectedBoat = null;
                 selectedBoatIdx = -1;
@@ -225,19 +238,50 @@ namespace MainApp
         public void Rectangle_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
+            String name = rect.Name;
+            var splittedName = name.Split(':');
+            int x = Int32.Parse(splittedName[0].ToString());
+            int y = Int32.Parse(splittedName[1].ToString());
+            Board.Tile[,] t = myBoard.B;
 
             if (selectedBoatIdx != -1)
             {
-                rect.Fill = new SolidColorBrush(Colors.DimGray);
+                if(selectedBoat.width == 1)
+                {
+                    for(int i = 0; i < selectedBoat.height; i++)
+                    {
+                        if(y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize)
+                        {
+                            t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < selectedBoat.width; i++)
+                    {
+                        if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize)
+                        {
+                            t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.LightGray);
+                        }
+                    }
+                }
             }
         }
         public void Rectangle_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
+            Board.Tile[,] t = myBoard.B;
+            SolidColorBrush fillBrush = new SolidColorBrush(Colors.LightGray);
 
-            if (selectedBoatIdx != -1)
+
+            foreach (Board.Tile tile in t)
             {
-                rect.Fill = new SolidColorBrush(Colors.White);
+                SolidColorBrush rectFillBrush = (SolidColorBrush)tile.rect.Fill;
+                if (rectFillBrush.Color == fillBrush.Color)
+                {
+                    tile.rect.Fill = new SolidColorBrush(Colors.White);
+                }
             }
         }
 
@@ -245,7 +289,7 @@ namespace MainApp
         {
             Rectangle rect = (Rectangle)sender;
             rect.PointerExited += new PointerEventHandler(Boat_PointerExited);
-            rect.Fill = new SolidColorBrush(Colors.Red);
+            rect.Fill = new SolidColorBrush(Colors.DimGray);
         }
         public void Boat_PointerExited(object sender, PointerRoutedEventArgs e)
         {
@@ -261,7 +305,7 @@ namespace MainApp
             // Get the name of the clicked boat
             Grid grid = (Grid)rect.Parent;
             string boatName = grid.Name.Split("Grid")[0];
-            rect.Fill = new SolidColorBrush(Colors.Red);
+            rect.Fill = new SolidColorBrush(Colors.DimGray);
 
             // Depending on the name we create the boat object and put it in selectedBoat
             selectedBoat = boatName == "carrier"  ? new Boat("carrier", 5, 1) : selectedBoat;

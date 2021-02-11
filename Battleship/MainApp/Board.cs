@@ -21,9 +21,10 @@ namespace MainApp
         }
 
         static public Tile[,] b;
-        public Tile[,] B => b;
-        static public List<Boat> boats;
+        static public List<Boat> boats = new List<Boat> { };
 
+        public Tile[,] B => b;
+        public List<Boat> Boats => boats;
 
         public Board(int width, int height) => b = new Tile[width, height];
         public void addTile(Tile t, int x, int y) => b[x, y] = t;
