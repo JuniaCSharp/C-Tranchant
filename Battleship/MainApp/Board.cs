@@ -52,5 +52,12 @@ namespace MainApp
             topLeftPosX = x;
             topLeftPosY = y;
         }
+
+        public void rotateBoat()
+        {
+            int temp = width;
+            width = height;
+            height = temp;
+        }
     }
 }

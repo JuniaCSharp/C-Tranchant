@@ -203,16 +203,18 @@ namespace MainApp
 
         public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
+
+            Windows.UI.Input.PointerPointProperties ptrPt = e.GetCurrentPoint(this).Properties;
             Rectangle rect = (Rectangle)sender;
             String name = rect.Name;
             var splittedName = name.Split(':');
             int x = Int32.Parse(splittedName[0].ToString());
             int y = Int32.Parse(splittedName[1].ToString());
-
+            
             Board.Tile[,] t = myBoard.B;
 
             // if the user want to place a boat
-            if (selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
+            if (ptrPt.IsLeftButtonPressed && selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
             {
                 Border boatBorder = BoatNameToBoatBorder[selectedBoat.name];
                 Grid boatGrid = (Grid)boatBorder.Child;
@@ -251,6 +253,12 @@ namespace MainApp
                 selectedBoat = null;
                 selectedBoatIdx = -1;
             } 
+            else if (ptrPt.IsRightButtonPressed && selectedBoatIdx != -1)
+            {
+                selectedBoat.rotateBoat();
+                Rectangle_PointerExited(sender, e);
+                Rectangle_PointerEntered(sender, e);
+            }
         }
         public void Rectangle_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
