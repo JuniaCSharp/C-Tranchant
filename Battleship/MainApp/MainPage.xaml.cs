@@ -44,13 +44,14 @@ namespace MainApp
             this.InitializeSea(EnemySeaBorder, enemyBoard);
             this.InitializeSea(MySeaBorder, myBoard);
             this.InitializeBoats();
+            this.InitializeBotBoard();
 
             // Init the dictionnary
             BoatNameToBoatBorder.Add("carrier", CarrierBorder);
             BoatNameToBoatBorder.Add("destroyer", DestroyerBorder);
             BoatNameToBoatBorder.Add("submarine1", Submarine1Border);
             BoatNameToBoatBorder.Add("submarine2", Submarine2Border);
-            BoatNameToBoatBorder.Add("torpedo", TorpedoBorder);;
+            BoatNameToBoatBorder.Add("torpedo", TorpedoBorder);
         }
 
         ////////////////////////////////////////// Initializer //////////////////////////////////////////
@@ -58,14 +59,14 @@ namespace MainApp
         public void InitializeSea(Border border, Board board)
         {
             // Init Grid Object
-            
+
             seaGrid = new Grid();
             seaGrid.Name = "SeaGrid" + border.Name;
             double boardWidth = border.Width;
             double boardHeight = border.Height;
 
             // Create Cols and Rows of our Grid (15x15)
-            for (int i = 0; i < boardSize; i++){
+            for (int i = 0; i < boardSize; i++) {
                 ColumnDefinition col = new ColumnDefinition();
                 RowDefinition row = new RowDefinition();
                 col.Width = new GridLength(boardWidth / boardSize);
@@ -75,8 +76,8 @@ namespace MainApp
             }
 
             // Fill Cols and Rows with Rectangles
-            for (int i = 0; i < boardSize; i++){
-                for (int j = 0; j < boardSize; j++){
+            for (int i = 0; i < boardSize; i++) {
+                for (int j = 0; j < boardSize; j++) {
                     // Initialize the Rectangle
                     Rectangle rect = new Rectangle();
                     rect.Width = boardWidth / boardSize;
@@ -91,7 +92,7 @@ namespace MainApp
                         rect.PointerEntered += new PointerEventHandler(Rectangle_PointerEntered);
                         rect.PointerExited += new PointerEventHandler(Rectangle_PointerExited);
                     }
-                        
+
                     //Put it into the Board Object (state 0 == empty cell)
                     Board.Tile tile = new Board.Tile(rect, "0");
                     board.addTile(tile, i, j);
@@ -161,6 +162,77 @@ namespace MainApp
             }
 
             border.Child = boatGrid;
+        }
+
+        public void InitializeBotBoard()
+        {
+            List<Boat> boatList = new List<Boat> { new Boat("carrier", 5, 1), new Boat("destroyer", 1, 4), new Boat("submarine1", 1, 3), new Boat("submarine2", 3, 1), new Boat("torpedo", 1, 2) };
+
+            var rand = new Random();
+
+            Border playerBorder = EnemySeaBorder;
+            Grid enemyGrid = (Grid)playerBorder.Child;
+            var l = enemyGrid.Children;
+            bool isMovePossible = false;
+
+            foreach (Boat boat in boatList)
+            {
+                isMovePossible = false;
+
+                while (isMovePossible == false)
+                {
+                    var x = rand.Next(10);
+                    var y = rand.Next(10);
+                    isMovePossible = true;
+
+                    if (CheckBoatPlacement(enemyBoard.B, x, y, boat, 0))
+                    {
+                        if (boat.width == 1)
+                        {
+                            for (int i = 0; i < boat.height; i++)
+                            {
+                                if (enemyBoard.B[y + i, x].state != "0")
+                                {
+                                    isMovePossible = false;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < boat.width; i++)
+                            {
+                                if (enemyBoard.B[y, x + i].state != "0")
+                                {
+                                    isMovePossible = false;
+                                }
+                            }
+                        }
+                        if (isMovePossible)
+                        {
+                            if (boat.width == 1)
+                            {
+                                for (int i = 0; i < boat.height; i++)
+                                {
+                                    enemyBoard.B[y + i, x].rect.Fill = new SolidColorBrush(Colors.Red);
+                                    enemyBoard.B[y + i, x].state = "1:" + boat.name;
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < boat.width; i++)
+                                {
+                                    enemyBoard.B[y, x + i].rect.Fill = new SolidColorBrush(Colors.Red);
+                                    enemyBoard.B[y, x + i].state = "1:" + boat.name;
+                                }
+                            }
+                            boat.setTopLeftPos(x, y);
+                            enemyBoard.addBoat(boat);
+                            isMovePossible = true;
+                        }
+                    }
+                    else { isMovePossible = false;  }
+                }
+            }
         }
 
         public bool CheckBoatPlacement(Board.Tile[,] board, int x, int y, Boat boat, int idx)
@@ -252,7 +324,7 @@ namespace MainApp
 
                 selectedBoat = null;
                 selectedBoatIdx = -1;
-            } 
+            }
             else if (ptrPt.IsRightButtonPressed && selectedBoatIdx != -1)
             {
                 selectedBoat.rotateBoat();
