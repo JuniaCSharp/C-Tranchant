@@ -24,11 +24,11 @@ namespace MainApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        static public Grid seaGrid;
+        static public Grid Grid;
 
+        static public int boardSize = 10;
         public Board myBoard = new Board(boardSize, boardSize);
         public Board enemyBoard = new Board(boardSize, boardSize);
-        static public int boardSize = 10;
 
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
@@ -41,8 +41,8 @@ namespace MainApp
             selectedBoatIdx = -1;
 
             this.InitializeComponent();
-            this.InitializeSea(EnemySeaBorder, enemyBoard);
-            this.InitializeSea(MySeaBorder, myBoard);
+            this.enemyBoard = this.InitializeSea(EnemySeaBorder);
+            this.myBoard = this.InitializeSea(MySeaBorder);
             this.InitializeBoats();
             this.InitializeBotBoard();
 
@@ -56,14 +56,15 @@ namespace MainApp
 
         ////////////////////////////////////////// Initializer //////////////////////////////////////////
 
-        public void InitializeSea(Border border, Board board)
+        public Board InitializeSea(Border border)
         {
             // Init Grid Object
-
-            seaGrid = new Grid();
-            seaGrid.Name = "SeaGrid" + border.Name;
+            Grid = new Grid();
+            Board board = new Board(10, 10);
+            Grid.Name = "SeaGrid" + border.Name;
             double boardWidth = border.Width;
             double boardHeight = border.Height;
+            Rectangle rect;
 
             // Create Cols and Rows of our Grid (15x15)
             for (int i = 0; i < boardSize; i++) {
@@ -71,18 +72,17 @@ namespace MainApp
                 RowDefinition row = new RowDefinition();
                 col.Width = new GridLength(boardWidth / boardSize);
                 row.Height = new GridLength(boardHeight / boardSize);
-                seaGrid.ColumnDefinitions.Add(col);
-                seaGrid.RowDefinitions.Add(row);
+                Grid.ColumnDefinitions.Add(col);
+                Grid.RowDefinitions.Add(row);
             }
 
             // Fill Cols and Rows with Rectangles
             for (int i = 0; i < boardSize; i++) {
                 for (int j = 0; j < boardSize; j++) {
                     // Initialize the Rectangle
-                    Rectangle rect = new Rectangle();
+                    rect = new Rectangle();
                     rect.Width = boardWidth / boardSize;
                     rect.Height = boardHeight / boardSize;
-                    rect.Name = (j + ":" + i);
                     rect.Fill = new SolidColorBrush(Colors.White);
                     rect.Stroke = new SolidColorBrush(Colors.Blue);
                     // Link with handlers
@@ -91,18 +91,22 @@ namespace MainApp
                         rect.PointerPressed += new PointerEventHandler(Rectangle_PointerPressed);
                         rect.PointerEntered += new PointerEventHandler(Rectangle_PointerEntered);
                         rect.PointerExited += new PointerEventHandler(Rectangle_PointerExited);
+                        rect.Name = (j + ":p1:" + i);
                     }
-
+                    else
+                    {
+                        rect.Name = (j + ":bot:" + i);
+                    }
                     //Put it into the Board Object (state 0 == empty cell)
-                    Board.Tile tile = new Board.Tile(rect, "0");
-                    board.addTile(tile, i, j);
+                    board.addTile(new Tile(rect, "0"), i, j);
                     // Put it into the grid
                     Grid.SetRow(rect, i);
                     Grid.SetColumn(rect, j);
-                    seaGrid.Children.Add(rect);
+                    Grid.Children.Add(rect);
                 }
             }
-            border.Child = seaGrid;
+            border.Child = Grid;
+            return board;
         }
         public void InitializeBoats()
         {
@@ -170,9 +174,6 @@ namespace MainApp
 
             var rand = new Random();
 
-            Border playerBorder = EnemySeaBorder;
-            Grid enemyGrid = (Grid)playerBorder.Child;
-            var l = enemyGrid.Children;
             bool isMovePossible = false;
 
             foreach (Boat boat in boatList)
@@ -235,7 +236,7 @@ namespace MainApp
             }
         }
 
-        public bool CheckBoatPlacement(Board.Tile[,] board, int x, int y, Boat boat, int idx)
+        public bool CheckBoatPlacement(Tile[,] board, int x, int y, Boat boat, int idx)
         {
             // If the boat is vertical
             if (boat.width == 1)
@@ -281,9 +282,9 @@ namespace MainApp
             String name = rect.Name;
             var splittedName = name.Split(':');
             int x = Int32.Parse(splittedName[0].ToString());
-            int y = Int32.Parse(splittedName[1].ToString());
+            int y = Int32.Parse(splittedName[2].ToString());
             
-            Board.Tile[,] t = myBoard.B;
+            Tile[,] t = myBoard.B;
 
             // if the user want to place a boat
             if (ptrPt.IsLeftButtonPressed && selectedBoatIdx != -1 && CheckBoatPlacement(myBoard.B, x, y, selectedBoat, selectedBoatIdx))
@@ -338,8 +339,8 @@ namespace MainApp
             String name = rect.Name;
             var splittedName = name.Split(':');
             int x = Int32.Parse(splittedName[0].ToString());
-            int y = Int32.Parse(splittedName[1].ToString());
-            Board.Tile[,] t = myBoard.B;
+            int y = Int32.Parse(splittedName[2].ToString());
+            Tile[,] t = myBoard.B;
 
             if (selectedBoatIdx != -1)
             {
@@ -389,11 +390,11 @@ namespace MainApp
         public void Rectangle_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
-            Board.Tile[,] t = myBoard.B;
+            Tile[,] t = myBoard.B;
             SolidColorBrush fillBrush1 = new SolidColorBrush(Colors.LightGray);
             SolidColorBrush fillBrush2 = new SolidColorBrush(Colors.OrangeRed);
 
-            foreach (Board.Tile tile in t)
+            foreach (Tile tile in t)
             {
                 SolidColorBrush rectFillBrush = (SolidColorBrush)tile.rect.Fill;
                 if (rectFillBrush.Color == fillBrush1.Color || rectFillBrush.Color == fillBrush2.Color)

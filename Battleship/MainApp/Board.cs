@@ -9,26 +9,27 @@ namespace MainApp
 {
     public class Board
     {
-        public struct Tile
-        {
-            public Rectangle rect;
-            public string state;
-            public Tile(Rectangle r, string s)
-            {
-                rect = r;
-                state = s;
-            }
-        }
 
-        static public Tile[,] b;
-        static public List<Boat> boats = new List<Boat> { };
+        public Tile[,] b;
+        public List<Boat> boats = new List<Boat> { };
 
-        public Tile[,] B => b;
+        public Tile[,] B => this.b;
         public List<Boat> Boats => boats;
 
-        public Board(int width, int height) => b = new Tile[width, height];
-        public void addTile(Tile t, int x, int y) => b[x, y] = t;
+        public Board(int width, int height) => this.b = new Tile[width, height];
+        public void addTile(Tile t, int x, int y) => this.b[x, y] = t;
         public void addBoat(Boat boat) => boats.Add(boat);
+    }
+
+    public struct Tile
+    {
+        public Rectangle rect;
+        public string state;
+        public Tile(Rectangle r, string s)
+        {
+            rect = r;
+            state = s;
+        }
     }
 
     public class Boat
