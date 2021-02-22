@@ -33,12 +33,15 @@ namespace MainApp
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
 
+        static public int playerTurn;
+
         public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
 
         public MainPage()
         {
             selectedBoat = null;
             selectedBoatIdx = -1;
+            playerTurn = -1;
 
             this.InitializeComponent();
             this.enemyBoard = this.InitializeSea(EnemySeaBorder);
@@ -108,6 +111,7 @@ namespace MainApp
             border.Child = Grid;
             return board;
         }
+
         public void InitializeBoats()
         {
             InitializeBoat("carrier", 5, 1, CarrierBorder);
@@ -272,6 +276,22 @@ namespace MainApp
                 return true;
         }
 
+        public bool CheckEndGame(Board board)
+        {
+            foreach (var boat in board.Boats)
+            {
+                for (int i = 0; i < boat.damage.Length; i++)
+                {
+                    if (boat.damage[i] == 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
 
         public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -318,6 +338,12 @@ namespace MainApp
 
                 // Hide the boat if placement is succesful
                 boatGrid.Visibility = Visibility.Collapsed;
+
+                // Start the game if there is no more boat to put
+                if(myBoard.boats.Count == 5)
+                {
+                    playerTurn = 0;
+                }
 
                 if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
                 else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
