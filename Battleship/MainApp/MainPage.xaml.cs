@@ -19,9 +19,6 @@ using Windows.UI.Xaml.Shapes;
 
 namespace MainApp
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         static public Grid Grid;
@@ -35,7 +32,7 @@ namespace MainApp
         public int playerTurn = -1;
 
         public int test;
-        static public int playerTurn;
+       
 
         public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
 
