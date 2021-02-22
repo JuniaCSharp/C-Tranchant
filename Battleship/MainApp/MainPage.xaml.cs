@@ -33,6 +33,7 @@ namespace MainApp
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
 
+        public int test;
         static public int playerTurn;
 
         public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
