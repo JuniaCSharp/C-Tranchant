@@ -215,7 +215,7 @@ namespace MainApp
                                 for (int i = 0; i < boat.height; i++)
                                 {
                                     enemyBoard.B[y + i, x].rect.Fill = new SolidColorBrush(Colors.Red);
-                                    enemyBoard.B[y + i, x].state = "1:" + boat.name;
+                                    enemyBoard.B[y + i, x].state = "1:" + boat.name + ":" + i;
                                 }
                             }
                             else
@@ -223,7 +223,7 @@ namespace MainApp
                                 for (int i = 0; i < boat.width; i++)
                                 {
                                     enemyBoard.B[y, x + i].rect.Fill = new SolidColorBrush(Colors.Red);
-                                    enemyBoard.B[y, x + i].state = "1:" + boat.name;
+                                    enemyBoard.B[y, x + i].state = "1:" + boat.name + i;
                                 }
                             }
                             boat.setTopLeftPos(x, y);
@@ -300,7 +300,7 @@ namespace MainApp
                         if (y - selectedBoatIdx + i >= 0 && y - selectedBoatIdx + i < boardSize)
                         {
                             t[y - selectedBoatIdx + i, x].rect.Fill = new SolidColorBrush(Colors.DimGray);
-                            t[y - selectedBoatIdx + i, x].state = "1:" + name;
+                            t[y - selectedBoatIdx + i, x].state = "1:" + selectedBoat.name + ":" + i;
                         }
                     }
                 }
@@ -311,7 +311,7 @@ namespace MainApp
                         if (x - selectedBoatIdx + i >= 0 && x - selectedBoatIdx + i < boardSize)
                         {
                             t[y, x - selectedBoatIdx + i].rect.Fill = new SolidColorBrush(Colors.DimGray);
-                            t[y , x - selectedBoatIdx + i].state = "1:" + selectedBoat.name;
+                            t[y , x - selectedBoatIdx + i].state = "1:" + selectedBoat.name + ":" + i;
                         }
                     }
                 }
