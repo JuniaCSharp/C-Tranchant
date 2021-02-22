@@ -98,6 +98,7 @@ namespace MainApp
                     else
                     {
                         rect.Name = (j + ":bot:" + i);
+                        rect.PointerPressed += new PointerEventHandler(Player_Attack_PointerPressed);
                     }
                     //Put it into the Board Object (state 0 == empty cell)
                     board.addTile(new Tile(rect, "0"), i, j);
@@ -217,7 +218,6 @@ namespace MainApp
                             {
                                 for (int i = 0; i < boat.height; i++)
                                 {
-                                    enemyBoard.B[y + i, x].rect.Fill = new SolidColorBrush(Colors.Red);
                                     enemyBoard.B[y + i, x].state = "1:" + boat.name + ":" + i;
                                 }
                             }
@@ -225,8 +225,7 @@ namespace MainApp
                             {
                                 for (int i = 0; i < boat.width; i++)
                                 {
-                                    enemyBoard.B[y, x + i].rect.Fill = new SolidColorBrush(Colors.Red);
-                                    enemyBoard.B[y, x + i].state = "1:" + boat.name + i;
+                                    enemyBoard.B[y, x + i].state = "1:" + boat.name + ":" + i;
                                 }
                             }
                             boat.setTopLeftPos(x, y);
@@ -337,14 +336,10 @@ namespace MainApp
 
                 // Hide the boat if placement is succesful
                 boatGrid.Visibility = Visibility.Collapsed;
-<<<<<<< HEAD
-
-=======
                 if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
                 else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
                 myBoard.addBoat(selectedBoat);
                 
->>>>>>> Baptiste
                 // Start the game if there is no more boat to put
                 if(myBoard.boats.Count == 5)
                 {
@@ -434,6 +429,48 @@ namespace MainApp
                     tile.rect.Fill = new SolidColorBrush(Colors.White);
                 }
             }
+        }
+
+        public void Player_Attack_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            if (playerTurn == 0)
+            {
+                Rectangle rect = (Rectangle)sender;
+
+                string[] coords = rect.Name.Split(":");
+
+                int y = Int32.Parse(coords[0]);
+                int x = Int32.Parse(coords[2]);
+
+                string[] state = enemyBoard.B[x, y].state.Split(":");
+
+                if (state[0] == "1")
+                {
+                    string name = state[1];
+                    int idx = Int32.Parse(state[2]);
+                    List<Boat> boats = enemyBoard.Boats;
+                    rect.Fill = new SolidColorBrush(Colors.Red);
+                    foreach (Boat boat in boats)
+                    {
+                        if (boat.name == name)
+                        {
+                            boat.damage[idx] = 1;
+                        }
+                    }
+                    if (CheckEndGame(enemyBoard))
+                    {
+                        Level.Text = "Bravo, cé gagné";
+                    }
+                }
+
+                if (state[0] == "0")
+                {
+                    rect.Fill = new SolidColorBrush(Colors.LightGoldenrodYellow);
+                    playerTurn = 0;
+                }
+
+            }
+
         }
 
         public void Boat_PointerEntered(object sender, PointerRoutedEventArgs e)
