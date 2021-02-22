@@ -32,6 +32,7 @@ namespace MainApp
 
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
+        public int playerTurn = -1;
 
         public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
 
@@ -273,6 +274,22 @@ namespace MainApp
                 return true;
         }
 
+        public bool CheckEndGame(Board board)
+        {
+            foreach (var boat in board.Boats)
+            {
+                for (int i = 0; i < boat.damage.Length; i++)
+                {
+                    if (boat.damage[i] == 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
 
         public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -319,11 +336,6 @@ namespace MainApp
 
                 // Hide the boat if placement is succesful
                 boatGrid.Visibility = Visibility.Collapsed;
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                 if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
                 else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
                 myBoard.addBoat(selectedBoat);
