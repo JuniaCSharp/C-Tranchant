@@ -32,6 +32,7 @@ namespace MainApp
 
         static public Boat selectedBoat;
         static public int selectedBoatIdx;
+        public int playerTurn = -1;
 
         public int test;
         static public int playerTurn;
@@ -339,7 +340,14 @@ namespace MainApp
 
                 // Hide the boat if placement is succesful
                 boatGrid.Visibility = Visibility.Collapsed;
+<<<<<<< HEAD
 
+=======
+                if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
+                else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
+                myBoard.addBoat(selectedBoat);
+                
+>>>>>>> Baptiste
                 // Start the game if there is no more boat to put
                 if(myBoard.boats.Count == 5)
                 {
