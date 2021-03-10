@@ -31,8 +31,9 @@ namespace MainApp
         static public int selectedBoatIdx;
         public int playerTurn = -1;
 
+        public SolidColorBrush redBrush = new SolidColorBrush(Colors.Red);
+
         public int test;
-       
 
         public Dictionary<string, Border> BoatNameToBoatBorder = new Dictionary<string, Border>();
 
@@ -290,6 +291,155 @@ namespace MainApp
             return true;
         }
 
+        public void BotTurn(int prev)
+        {
+            var rand = new Random();
+            int n;
+            Tile tile;
+
+            // Check if we land a shot in the previous move
+            if (prev == -1)
+            {
+                // Let's get a random int between 0 and 100
+                n = rand.Next(0, 100);
+                tile = myBoard.B[n / 10, n % 10];
+
+                // Then check if the associated tile hasn't been choosen before (ie : color != yellow or red)
+                while (!isTileEmpty(tile))
+                {
+                    n = rand.Next(0, 100);
+                    tile = myBoard.B[n / 10, n % 10];
+                }
+            }
+            else
+            {
+                n = prev;
+                int direction = rand.Next(0, 4);
+                int x = prev / 10;
+                int y = prev % 10;
+
+                // Test if the adjacent tiles are empty
+                tile = getDirectionTile(direction, x, y);
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!isTileEmpty(tile))
+                    {
+                        direction = (direction + 1) % 4;
+                        tile = getDirectionTile(direction, x, y);
+                    }
+                }
+                // if not empty then choose randomly
+                if (!isTileEmpty(tile))
+                {
+                    n = rand.Next(0, 100);
+                    tile = myBoard.B[n / 10, n % 10];
+
+                    while (!isTileEmpty(tile))
+                    {
+                        n = rand.Next(0, 100);
+                        tile = myBoard.B[n / 10, n % 10];
+                    }
+                }
+
+            }
+            
+
+            string[] state = tile.state.Split(":");
+
+            if (state[0] == "1")
+            {
+                string name = state[1];
+                int idx = Int32.Parse(state[2]);
+                List<Boat> boats = myBoard.Boats;
+                tile.rect.Fill = redBrush;
+
+                foreach (Boat boat in boats)
+                {
+                    if (boat.name == name)
+                    {
+                        boat.damage[idx] = 1;
+                    }
+                }
+                if (CheckEndGame(myBoard))
+                {
+                    Level.Text = "Bravo, Bot";
+                }
+                else
+                {
+                    BotTurn(n);
+                }
+            }
+
+            if (state[0] == "0")
+            {
+                tile.rect.Fill = new SolidColorBrush(Colors.LightGoldenrodYellow);
+                playerTurn = 0;
+            }
+
+        }
+
+        public Tile getDirectionTile(int direction, int x, int y)
+        {
+            if (direction == 0)
+            {
+                if (x == 9)
+                {
+                    return myBoard.B[x - 1, y];
+                }
+                else
+                {
+                    return myBoard.B[x + 1, y];
+                }
+            }
+            else if (direction == 1)
+            {
+                if (x == 0)
+                {
+                    return myBoard.B[x + 1, y];
+                }
+                else
+                {
+                    return myBoard.B[x - 1, y];
+                }
+            }
+            else if (direction == 2)
+            {
+                if (y == 9)
+                {
+                    return myBoard.B[x, y - 1];
+                }
+                else
+                {
+                    return myBoard.B[x, y + 1];
+                }
+            }
+            else
+            {
+                if (y == 0)
+                {
+                    return myBoard.B[x, y + 1];
+                }
+                else
+                {
+                    return myBoard.B[x, y - 1];
+                }
+            }
+        }
+        public bool isTileEmpty(Tile t)
+        {
+            SolidColorBrush fillBrushRed = new SolidColorBrush(Colors.Red);
+            SolidColorBrush fillBrushYellow = new SolidColorBrush(Colors.LightGoldenrodYellow);
+
+            SolidColorBrush rectFillBrush = (SolidColorBrush)t.rect.Fill;
+
+            if (rectFillBrush.Color == fillBrushRed.Color || rectFillBrush.Color == fillBrushYellow.Color)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         ////////////////////////////////////////// Event Handlers //////////////////////////////////////////
 
         public void Rectangle_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -348,7 +498,6 @@ namespace MainApp
 
                 if (selectedBoat.width == 1){ selectedBoat.setTopLeftPos(x, y - selectedBoatIdx); }
                 else { selectedBoat.setTopLeftPos(x - selectedBoatIdx, y); }
-                myBoard.addBoat(selectedBoat);
 
                 selectedBoat = null;
                 selectedBoatIdx = -1;
@@ -450,6 +599,7 @@ namespace MainApp
                     int idx = Int32.Parse(state[2]);
                     List<Boat> boats = enemyBoard.Boats;
                     rect.Fill = new SolidColorBrush(Colors.Red);
+
                     foreach (Boat boat in boats)
                     {
                         if (boat.name == name)
@@ -466,9 +616,10 @@ namespace MainApp
                 if (state[0] == "0")
                 {
                     rect.Fill = new SolidColorBrush(Colors.LightGoldenrodYellow);
-                    playerTurn = 0;
-                }
+                    playerTurn = -1;
 
+                    BotTurn(-1);
+                }
             }
 
         }
