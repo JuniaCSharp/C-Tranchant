@@ -362,7 +362,7 @@ namespace MainApp
                 }
                 if (CheckEndGame(myBoard))
                 {
-                    Level.Text = "Bravo, Bot";
+                    StartButton.Content = "Bot win";
                 }
                 else
                 {
@@ -609,7 +609,7 @@ namespace MainApp
                     }
                     if (CheckEndGame(enemyBoard))
                     {
-                        Level.Text = "Bravo, cé gagné";
+                        StartButton.Content = "Player win";
                     }
                 }
 
